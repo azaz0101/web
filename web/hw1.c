@@ -127,7 +127,7 @@ void handle (int fd){
 }
 
 int main(int argc, char **argv){
-    int i, pid, listenfd, socketfd;
+    int i, pid, listenfd, socketfd, status;
     socklen_t length;
     static struct sockaddr_in cli_addr;
     static struct sockaddr_in serv_addr;
@@ -169,6 +169,7 @@ int main(int argc, char **argv){
             }
 			else { 
 				/* 父行程 */
+				wait(&status);
                 close(socketfd);
             }
         }
